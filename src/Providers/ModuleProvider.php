@@ -22,8 +22,13 @@ class ModuleProvider extends ServiceProvider
 
         // Add dirs
         View::addLocation(__DIR__ . '/../Views');
-        Lang::addNamespace('groups', __DIR__ . '/../lang');
-        Config::addNamespace('groups', __DIR__ . '/../config');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'groups');
+        $this->publishes([
+            __DIR__ . '/../config/' => config_path('typicms/groups'),
+        ], 'config');
+        $this->publishes([
+            __DIR__ . '/../migrations/' => base_path('/database/migrations'),
+        ], 'migrations');
     }
 
     public function register()
@@ -48,10 +53,5 @@ class ModuleProvider extends ServiceProvider
                 $app->make('TypiCMS\Modules\Groups\Repositories\GroupInterface')
             );
         });
-
-        $app->before(function ($request, $response) {
-            require __DIR__ . '/../breadcrumbs.php';
-        });
-
     }
 }

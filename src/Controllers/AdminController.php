@@ -34,7 +34,7 @@ class AdminController extends AdminSimpleController
     {
         $this->title['child'] = trans('groups::global.Edit');
 
-        $this->layout->content = View::make('core::admin.edit')
+        return view('core::admin.edit')
             ->withPermissions($group->getPermissions())
             ->withModel($group);
     }
