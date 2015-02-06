@@ -1,16 +1,14 @@
 <?php
 namespace TypiCMS\Modules\Groups\Providers;
 
-use Lang;
-use View;
 use Config;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
+use Lang;
 use TypiCMS\Modules\Groups\Repositories\SentryGroup;
-
-// Form
 use TypiCMS\Modules\Groups\Services\Form\GroupForm;
 use TypiCMS\Modules\Groups\Services\Form\GroupFormLaravelValidator;
+use View;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -21,7 +19,7 @@ class ModuleProvider extends ServiceProvider
         require __DIR__ . '/../routes.php';
 
         // Add dirs
-        View::addLocation(__DIR__ . '/../Views');
+        View::addNamespace('groups', __DIR__ . '/../views/');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'groups');
         $this->publishes([
             __DIR__ . '/../config/' => config_path('typicms/groups'),

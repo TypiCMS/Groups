@@ -2,7 +2,7 @@
     <script src="{{ asset('js/admin/checkboxes-permissions.js') }}"></script>
 @stop
 
-{{ BootForm::hidden('id'); }}
+{!! BootForm::hidden('id') !!}
 
 
 @include('core::admin._buttons-form')
