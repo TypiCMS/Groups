@@ -1,7 +1,7 @@
 <?php
-namespace TypiCMS\Modules\Groups\Controllers;
+namespace TypiCMS\Modules\Groups\Http\Controllers;
 
-use TypiCMS\Controllers\BaseApiController;
+use TypiCMS\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Groups\Repositories\GroupInterface as Repository;
 
 class ApiController extends BaseApiController

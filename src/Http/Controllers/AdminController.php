@@ -1,7 +1,7 @@
 <?php
-namespace TypiCMS\Modules\Groups\Controllers;
+namespace TypiCMS\Modules\Groups\Http\Controllers;
 
-use TypiCMS\Controllers\AdminSimpleController;
+use TypiCMS\Http\Controllers\AdminSimpleController;
 use TypiCMS\Modules\Groups\Repositories\GroupInterface;
 use TypiCMS\Modules\Groups\Services\Form\GroupForm;
 use View;

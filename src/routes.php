@@ -3,7 +3,7 @@ Route::model('groups', 'TypiCMS\Modules\Groups\Models\Group');
 
 Route::group(
     array(
-        'namespace' => 'TypiCMS\Modules\Groups\Controllers',
+        'namespace' => 'TypiCMS\Modules\Groups\Http\Controllers',
         'prefix'    => 'admin',
     ),
     function () {
