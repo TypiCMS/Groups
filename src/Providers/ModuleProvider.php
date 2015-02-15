@@ -6,8 +6,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Lang;
 use TypiCMS\Modules\Groups\Repositories\SentryGroup;
-use TypiCMS\Modules\Groups\Services\Form\GroupForm;
-use TypiCMS\Modules\Groups\Services\Form\GroupFormLaravelValidator;
 use View;
 
 class ModuleProvider extends ServiceProvider
@@ -47,11 +45,5 @@ class ModuleProvider extends ServiceProvider
             );
         });
 
-        $app->bind('TypiCMS\Modules\Groups\Services\Form\GroupForm', function (Application $app) {
-            return new GroupForm(
-                new GroupFormLaravelValidator($app['validator']),
-                $app->make('TypiCMS\Modules\Groups\Repositories\GroupInterface')
-            );
-        });
     }
 }

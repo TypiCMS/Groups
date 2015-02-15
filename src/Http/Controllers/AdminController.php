@@ -2,8 +2,8 @@
 namespace TypiCMS\Modules\Groups\Http\Controllers;
 
 use TypiCMS\Http\Controllers\AdminSimpleController;
+use TypiCMS\Modules\Groups\Http\Requests\FormRequest;
 use TypiCMS\Modules\Groups\Repositories\GroupInterface;
-use TypiCMS\Modules\Groups\Services\Form\GroupForm;
 use View;
 
 class AdminController extends AdminSimpleController
@@ -15,10 +15,9 @@ class AdminController extends AdminSimpleController
      * @param GroupInterface $group
      * @param GroupForm     $groupForm
      */
-    public function __construct(GroupInterface $group, GroupForm $groupForm)
+    public function __construct(GroupInterface $group)
     {
         parent::__construct($group, $groupForm);
-        $this->title['parent'] = trans_choice('groups::global.groups', 2);
 
         // Establish Filters
         $this->beforeFilter('inGroup:Admins');
@@ -36,5 +35,30 @@ class AdminController extends AdminSimpleController
 
         return view('core::admin.edit')
             ->with(compact('permissions', 'model'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  FormRequest $request
+     * @return Redirect
+     */
+    public function store(FormRequest $request)
+    {
+        $model = $this->repository->create($request->all());
+        return $this->redirect($request, $model);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  $model
+     * @param  FormRequest $request
+     * @return Redirect
+     */
+    public function update($model, FormRequest $request)
+    {
+        $this->repository->update($request->all());
+        return $this->redirect($request, $model);
     }
 }
