@@ -2,6 +2,7 @@
 namespace TypiCMS\Modules\Groups\Providers;
 
 use Config;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Lang;
@@ -22,6 +23,11 @@ class ModuleProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../migrations/' => base_path('/database/migrations'),
         ], 'migrations');
+
+        AliasLoader::getInstance()->alias(
+            'Groups',
+            'TypiCMS\Modules\Groups\Facades\Facade'
+        );
     }
 
     public function register()

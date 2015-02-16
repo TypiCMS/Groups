@@ -13,11 +13,10 @@ class AdminController extends AdminSimpleController
      * __construct
      *
      * @param GroupInterface $group
-     * @param GroupForm     $groupForm
      */
     public function __construct(GroupInterface $group)
     {
-        parent::__construct($group, $groupForm);
+        parent::__construct($group);
 
         // Establish Filters
         $this->beforeFilter('inGroup:Admins');
@@ -31,7 +30,7 @@ class AdminController extends AdminSimpleController
     public function edit($model)
     {
         $this->title['child'] = trans('groups::global.Edit');
-        $permissions = $group->getPermissions();
+        $permissions = $model->getPermissions();
 
         return view('core::admin.edit')
             ->with(compact('permissions', 'model'));
