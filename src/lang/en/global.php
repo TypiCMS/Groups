@@ -1,6 +1,6 @@
 <?php
 return array(
-    'name' => 'groups',
+    'name' => 'Groups',
     'groups' => 'group|groups',
     'New'  => 'New group',
     'Edit' => 'Edit group',
