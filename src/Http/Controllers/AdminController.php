@@ -29,7 +29,6 @@ class AdminController extends AdminSimpleController
      */
     public function edit($model)
     {
-        $this->title['child'] = trans('groups::global.Edit');
         $permissions = $model->getPermissions();
 
         return view('core::admin.edit')
