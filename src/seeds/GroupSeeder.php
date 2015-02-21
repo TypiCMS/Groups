@@ -1,5 +1,6 @@
 <?php
-namespace TypiCMS\Modules\Groups\Seeds;
+
+use Illuminate\Database\Seeder;
 
 class GroupSeeder extends Seeder
 {
