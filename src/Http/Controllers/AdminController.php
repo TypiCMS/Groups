@@ -1,12 +1,12 @@
 <?php
 namespace TypiCMS\Modules\Groups\Http\Controllers;
 
-use TypiCMS\Http\Controllers\AdminSimpleController;
+use TypiCMS\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Groups\Http\Requests\FormRequest;
 use TypiCMS\Modules\Groups\Repositories\GroupInterface;
 use View;
 
-class AdminController extends AdminSimpleController
+class AdminController extends BaseAdminController
 {
 
     /**
