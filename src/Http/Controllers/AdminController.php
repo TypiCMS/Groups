@@ -17,9 +17,6 @@ class AdminController extends BaseAdminController
     public function __construct(GroupInterface $group)
     {
         parent::__construct($group);
-
-        // Establish Filters
-        $this->beforeFilter('inGroup:Admins');
     }
 
     /**
