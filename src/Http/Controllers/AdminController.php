@@ -27,7 +27,7 @@ class AdminController extends BaseAdminController
      *
      * @return Response
      */
-    public function edit($model)
+    public function edit($model, $child = null)
     {
         $permissions = $model->getPermissions();
 
