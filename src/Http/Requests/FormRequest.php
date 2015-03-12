@@ -8,7 +8,7 @@ class FormRequest extends AbstractFormRequest {
     public function rules()
     {
         $rules = [
-            'name' => 'required|min:4|unique:groups,name,' . $this->get('id'),
+            'name' => 'required|min:4|unique:groups,name,' . $this->id,
         ];
         return $rules;
     }
