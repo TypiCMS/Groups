@@ -8,7 +8,7 @@ use Cartalyst\Sentry\Groups\NameRequiredException;
 use Cartalyst\Sentry\Sentry;
 use Illuminate\Support\Collection;
 use Input;
-use TypiCMS\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 
 class SentryGroup extends RepositoriesAbstract implements GroupInterface
 {
@@ -25,7 +25,7 @@ class SentryGroup extends RepositoriesAbstract implements GroupInterface
 
     /**
      * Get empty model
-     * 
+     *
      * @return model
      */
     public function getModel()
@@ -35,7 +35,7 @@ class SentryGroup extends RepositoriesAbstract implements GroupInterface
 
     /**
      * Get table name
-     * 
+     *
      * @return string
      */
     public function getTable()

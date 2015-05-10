@@ -2,21 +2,21 @@
 namespace TypiCMS\Modules\Groups\Repositories;
 
 use Cartalyst\Sentry\Groups\GroupInterface as Model;
-use TypiCMS\Repositories\RepositoryInterface;
+use TypiCMS\Modules\Core\Repositories\RepositoryInterface;
 
 interface GroupInterface extends RepositoryInterface
 {
 
     /**
      * Get empty model
-     * 
+     *
      * @return model
      */
     public function getModel();
 
     /**
      * Get table name
-     * 
+     *
      * @return string
      */
     public function getTable();
