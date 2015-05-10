@@ -1,13 +1,10 @@
 <?php
 namespace TypiCMS\Modules\Groups\Providers;
 
-use Config;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Lang;
 use TypiCMS\Modules\Groups\Repositories\SentryGroup;
-use View;
 
 class ModuleProvider extends ServiceProvider
 {
