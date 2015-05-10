@@ -3,8 +3,8 @@ namespace TypiCMS\Modules\Groups\Models;
 
 use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroupModel;
 use InvalidArgumentException;
+use Laracasts\Presenter\PresentableTrait;
 use Log;
-use TypiCMS\Presenters\PresentableTrait;
 
 class Group extends SentryGroupModel
 {
