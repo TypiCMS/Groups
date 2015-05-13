@@ -7,7 +7,7 @@ use Cartalyst\Sentry\Groups\GroupNotFoundException;
 use Cartalyst\Sentry\Groups\NameRequiredException;
 use Cartalyst\Sentry\Sentry;
 use Illuminate\Support\Collection;
-use Input;
+use Illuminate\Support\Facades\Input;
 use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 
 class SentryGroup extends RepositoriesAbstract implements GroupInterface
