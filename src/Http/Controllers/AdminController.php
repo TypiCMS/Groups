@@ -26,7 +26,7 @@ class AdminController extends BaseAdminController
      */
     public function edit($model, $child = null)
     {
-        $permissions = $model->getPermissions();
+        $permissions = $model->permissions;
 
         return view('core::admin.edit')
             ->with(compact('permissions', 'model'));

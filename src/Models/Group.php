@@ -1,31 +1,17 @@
 <?php
 namespace TypiCMS\Modules\Groups\Models;
 
-use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroupModel;
-use InvalidArgumentException;
 use Laracasts\Presenter\PresentableTrait;
-use Log;
+use TypiCMS\Modules\Core\Models\Base;
+use TypiCMS\Modules\History\Traits\Historable;
 
-class Group extends SentryGroupModel
+class Group extends Base
 {
 
+    use Historable;
     use PresentableTrait;
 
     protected $presenter = 'TypiCMS\Modules\Groups\Presenters\ModulePresenter';
-
-    /**
-     * Get back office’s edit url of model
-     *
-     * @return string|void
-     */
-    public function editUrl()
-    {
-        try {
-            return route('admin.' . $this->getTable() . '.edit', $this->id);
-        } catch (InvalidArgumentException $e) {
-            Log::error($e->getMessage());
-        }
-    }
 
     /**
      * Get front office uri
@@ -39,16 +25,29 @@ class Group extends SentryGroupModel
     }
 
     /**
-     * Get back office’s index of models url
+     * One group has many users.
      *
-     * @return string|void
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function indexUrl()
+    public function users()
     {
-        try {
-            return route('admin.' . $this->getTable() . '.index');
-        } catch (InvalidArgumentException $e) {
-            Log::error($e->getMessage());
+        return $this->belongsToMany('TypiCMS\Modules\Users\Models\User');
+    }
+
+    /**
+     * Mutator for giving permissions.
+     *
+     * @param  mixed  $permissions
+     * @return array  $_permissions
+     */
+    public function getPermissionsAttribute($permissions)
+    {
+        if (! $permissions) {
+            return [];
         }
+        if (is_array($permissions)) {
+            return $permissions;
+        }
+        return json_decode($permissions, true);
     }
 }

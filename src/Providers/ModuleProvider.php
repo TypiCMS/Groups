@@ -4,7 +4,8 @@ namespace TypiCMS\Modules\Groups\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use TypiCMS\Modules\Groups\Repositories\SentryGroup;
+use TypiCMS\Modules\Groups\Models\Group;
+use TypiCMS\Modules\Groups\Repositories\EloquentGroup;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -54,9 +55,7 @@ class ModuleProvider extends ServiceProvider
         $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Groups\Composers\SidebarViewComposer');
 
         $app->bind('TypiCMS\Modules\Groups\Repositories\GroupInterface', function (Application $app) {
-            return new SentryGroup(
-                $app['sentry']
-            );
+            return new EloquentGroup(new Group);
         });
 
     }
