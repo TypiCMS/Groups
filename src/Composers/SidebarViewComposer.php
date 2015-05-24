@@ -17,7 +17,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
                 $item->route('admin.groups.index');
                 $item->append('admin.groups.create');
                 $item->authorize(
-                    $this->auth->hasAccess('groups.index')
+                    $this->user->hasAccess('groups.index')
                 );
             });
         });
