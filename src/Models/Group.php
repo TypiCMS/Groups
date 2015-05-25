@@ -19,6 +19,15 @@ class Group extends Base
     ];
 
     /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'permissions' => 'array',
+    ];
+
+    /**
      * Get front office uri
      *
      * @param  string $locale
@@ -37,22 +46,5 @@ class Group extends Base
     public function users()
     {
         return $this->belongsToMany('TypiCMS\Modules\Users\Models\User');
-    }
-
-    /**
-     * Mutator for giving permissions.
-     *
-     * @param  mixed  $permissions
-     * @return array  $_permissions
-     */
-    public function getPermissionsAttribute($permissions)
-    {
-        if (! $permissions) {
-            return [];
-        }
-        if (is_array($permissions)) {
-            return $permissions;
-        }
-        return json_decode($permissions, true);
     }
 }
