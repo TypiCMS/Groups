@@ -32,20 +32,8 @@ class EloquentGroup extends RepositoriesAbstract implements GroupInterface
      */
     public function create(array $data)
     {
-        $model = $this->model;
-
-        $groupData = array_except($data, ['_method','_token', 'id', 'exit']);
-        $groupData['permissions'] = $this->permissions($data);
-
-        foreach ($groupData as $key => $value) {
-            $model->$key = $value;
-        }
-
-        if ($model->save()) {
-            return $model;
-        }
-
-        return false;
+        $data['permissions'] = $this->permissions($data);
+        return parent::create($data);
     }
 
     /**
@@ -56,21 +44,8 @@ class EloquentGroup extends RepositoriesAbstract implements GroupInterface
      */
     public function update(array $data)
     {
-        $group = $this->model->find($data['id']);
-
-        $groupData = array_except($data, ['_method', '_token', 'exit']);
-        $groupData['permissions'] = $this->permissions($data);
-
-        foreach ($groupData as $key => $value) {
-            $group->$key = $value;
-        }
-
-        if ($group->save()) {
-            return true;
-        }
-
-        return false;
-
+        $data['permissions'] = $this->permissions($data);
+        return parent::update($data);
     }
 
     /**

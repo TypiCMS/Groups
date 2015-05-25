@@ -13,6 +13,11 @@ class Group extends Base
 
     protected $presenter = 'TypiCMS\Modules\Groups\Presenters\ModulePresenter';
 
+    protected $fillable = [
+        'name',
+        'permissions',
+    ];
+
     /**
      * Get front office uri
      *
