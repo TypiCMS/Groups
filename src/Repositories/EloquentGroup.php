@@ -23,43 +23,4 @@ class EloquentGroup extends RepositoriesAbstract implements GroupInterface
     {
         return $this->make($with)->order()->get();
     }
-
-    /**
-     * Create a new model
-     *
-     * @param  array $data
-     * @return mixed Model or false on error during save
-     */
-    public function create(array $data)
-    {
-        $data['permissions'] = $this->permissions($data);
-        return parent::create($data);
-    }
-
-    /**
-     * Update an existing model
-     *
-     * @param  array  $data
-     * @return boolean
-     */
-    public function update(array $data)
-    {
-        $data['permissions'] = $this->permissions($data);
-        return parent::update($data);
-    }
-
-    /**
-     * get extract and encode permissions from array
-     *
-     * @param  array $data
-     * @return string|null
-     */
-    private function permissions($data)
-    {
-        if (isset($data['permissions'])) {
-            return json_encode($data['permissions']);
-        }
-        return null;
-    }
-
 }
