@@ -33,7 +33,7 @@ class Group extends Base
      * @param  string $locale
      * @return null
      */
-    public function uri($locale)
+    public function uri($locale = null)
     {
         return null;
     }
