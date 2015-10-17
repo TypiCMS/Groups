@@ -1,4 +1,5 @@
 <?php
+
 namespace TypiCMS\Modules\Groups\Models;
 
 use Laracasts\Presenter\PresentableTrait;
@@ -7,7 +8,6 @@ use TypiCMS\Modules\History\Traits\Historable;
 
 class Group extends Base
 {
-
     use Historable;
     use PresentableTrait;
 
@@ -28,14 +28,15 @@ class Group extends Base
     ];
 
     /**
-     * Get front office uri
+     * Get front office uri.
      *
-     * @param  string $locale
+     * @param string $locale
+     *
      * @return null
      */
     public function uri($locale = null)
     {
-        return null;
+        return;
     }
 
     /**
