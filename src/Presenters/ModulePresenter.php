@@ -1,13 +1,13 @@
 <?php
+
 namespace TypiCMS\Modules\Groups\Presenters;
 
 use TypiCMS\Modules\Core\Presenters\Presenter;
 
 class ModulePresenter extends Presenter
 {
-
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */

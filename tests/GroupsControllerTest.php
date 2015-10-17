@@ -1,7 +1,7 @@
 <?php
+
 class GroupsControllerTest extends TestCase
 {
-
     public function testAdminIndex()
     {
         $response = $this->call('GET', 'admin/groups');
@@ -20,7 +20,7 @@ class GroupsControllerTest extends TestCase
     {
         $input = ['name' => 'test', 'permissions' => []];
         $this->call('POST', 'admin/groups', $input);
-        $this->assertRedirectedToRoute('admin.groups.edit', array('id' => 4));
+        $this->assertRedirectedToRoute('admin.groups.edit', ['id' => 4]);
     }
 
     public function testStoreSuccessWithRedirectToList()
@@ -29,5 +29,4 @@ class GroupsControllerTest extends TestCase
         $this->call('POST', 'admin/groups', $input);
         $this->assertRedirectedToRoute('admin.groups.index');
     }
-
 }
