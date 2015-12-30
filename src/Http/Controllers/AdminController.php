@@ -4,24 +4,20 @@ namespace TypiCMS\Modules\Groups\Http\Controllers;
 
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Groups\Http\Requests\FormRequest;
+use TypiCMS\Modules\Groups\Models\Group;
 use TypiCMS\Modules\Groups\Repositories\GroupInterface;
 
 class AdminController extends BaseAdminController
 {
-    /**
-     * __construct.
-     *
-     * @param GroupInterface $group
-     */
     public function __construct(GroupInterface $group)
     {
         parent::__construct($group);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edit form for the specified resource.
      *
-     * @return \Illuminate\Support\Facades\Response
+     * @return \Illuminate\View\View
      */
     public function edit($model, $child = null)
     {
@@ -34,29 +30,29 @@ class AdminController extends BaseAdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param FormRequest $request
+     * @param \TypiCMS\Modules\Groups\Http\Requests\FormRequest $request
      *
-     * @return Redirect
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FormRequest $request)
     {
-        $model = $this->repository->create($request->all());
+        $group = $this->repository->create($request->all());
 
-        return $this->redirect($request, $model);
+        return $this->redirect($request, $group);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  $model
-     * @param FormRequest $request
+     * @param \TypiCMS\Modules\Groups\Models\Group              $group
+     * @param \TypiCMS\Modules\Groups\Http\Requests\FormRequest $request
      *
-     * @return Redirect
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($model, FormRequest $request)
+    public function update(Group $group, FormRequest $request)
     {
         $this->repository->update($request->all());
 
-        return $this->redirect($request, $model);
+        return $this->redirect($request, $group);
     }
 }
