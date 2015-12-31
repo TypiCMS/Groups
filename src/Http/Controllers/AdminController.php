@@ -15,16 +15,30 @@ class AdminController extends BaseAdminController
     }
 
     /**
+     * Create form for a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        $model = $this->repository->getModel();
+
+        return view('core::admin.create')
+            ->with(compact('model'));
+    }
+
+    /**
      * Edit form for the specified resource.
      *
      * @return \Illuminate\View\View
      */
-    public function edit($model, $child = null)
+    public function edit(Group $group, $child = null)
     {
-        $permissions = $model->permissions;
-
         return view('core::admin.edit')
-            ->with(compact('permissions', 'model'));
+            ->with([
+                'model' => $group,
+                'permissions' => $group->permissions,
+            ]);
     }
 
     /**
