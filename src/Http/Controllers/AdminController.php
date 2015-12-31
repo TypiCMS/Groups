@@ -36,7 +36,7 @@ class AdminController extends BaseAdminController
     {
         return view('core::admin.edit')
             ->with([
-                'model' => $group,
+                'model'       => $group,
                 'permissions' => $group->permissions,
             ]);
     }
