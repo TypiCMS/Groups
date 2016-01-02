@@ -17,20 +17,6 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'TypiCMS\Modules\Groups\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
-     *
-     * @return void
-     */
-    public function boot(Router $router)
-    {
-        parent::boot($router);
-
-        $router->model('groups', 'TypiCMS\Modules\Groups\Models\Group');
-    }
-
-    /**
      * Define the routes for the application.
      *
      * @param \Illuminate\Routing\Router $router
@@ -44,12 +30,18 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Admin routes
              */
-            $router->resource('admin/groups', 'AdminController');
+            $router->get('admin/groups', ['as' => 'admin.groups.index', 'uses' => 'AdminController@index']);
+            $router->get('admin/groups/create', ['as' => 'admin.groups.create', 'uses' => 'AdminController@create']);
+            $router->get('admin/groups/{group}/edit', ['as' => 'admin.groups.edit', 'uses' => 'AdminController@edit']);
+            $router->post('admin/groups', ['as' => 'admin.groups.store', 'uses' => 'AdminController@store']);
+            $router->put('admin/groups/{group}', ['as' => 'admin.groups.update', 'uses' => 'AdminController@update']);
 
             /*
              * API routes
              */
-            $router->resource('api/groups', 'ApiController');
+            $router->get('api/groups', ['as' => 'api.groups.index', 'uses' => 'ApiController@index']);
+            $router->put('api/groups/{group}', ['as' => 'api.groups.update', 'uses' => 'ApiController@update']);
+            $router->delete('api/groups/{group}', ['as' => 'api.groups.destroy', 'uses' => 'ApiController@destroy']);
         });
     }
 }
