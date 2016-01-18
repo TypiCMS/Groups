@@ -8,10 +8,8 @@ class FormRequest extends AbstractFormRequest
 {
     public function rules()
     {
-        $rules = [
+        return [
             'name' => 'required|min:4|max:255|unique:groups,name,'.$this->id,
         ];
-
-        return $rules;
     }
 }
