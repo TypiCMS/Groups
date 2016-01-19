@@ -1,6 +1,6 @@
 @section('js')
     <script src="{{ asset('js/admin/checkboxes-permissions.js') }}"></script>
-@stop
+@endsection
 
 {!! BootForm::hidden('id') !!}
 
