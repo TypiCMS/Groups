@@ -16,16 +16,12 @@
                 <tr>
                     <th class="delete"></th>
                     <th class="edit"></th>
-                    <th st-sort="name" class="name st-sort">Name</th>
-                    <th st-sort="permissions" class="permissions st-sort">Permissions</th>
+                    <th st-sort="name" class="name st-sort" st-sort-default="true">Name</th>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
                     <td>
                         <input st-search="name" class="form-control input-sm" placeholder="@lang('global.Search')…" type="text">
-                    </td>
-                    <td>
-                        <input st-search="permissions" class="form-control input-sm" placeholder="@lang('global.Search')…" type="text">
                     </td>
                 </tr>
             </thead>
@@ -37,12 +33,11 @@
                         @include('core::admin._button-edit')
                     </td>
                     <td>@{{ model.name }}</td>
-                    <td>@{{ model.permissions }}</td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="8" typi-pagination></td>
+                    <td colspan="3" typi-pagination></td>
                 </tr>
             </tfoot>
         </table>
